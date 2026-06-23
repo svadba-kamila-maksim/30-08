@@ -628,7 +628,7 @@
       letter-spacing: .01em;
     }
 
-    input[type="text"], textarea {
+    input[type="text"], input[type="number"], textarea {
       width: 100%;
       min-height: 50px;
       border: 1px solid rgba(166,120,58,.35);
@@ -1136,6 +1136,19 @@
               <label class="choice"><input type="radio" name="withPartner" value="Так" required><span>Так</span></label>
               <label class="choice"><input type="radio" name="withPartner" value="Ні"><span>Ні</span></label>
             </div>
+          </div>
+
+          <div class="field">
+            <div class="label">Будете з дитиною?</div>
+            <div class="choice-grid">
+              <label class="choice"><input type="radio" name="withChildren" value="Так" required><span>Так</span></label>
+              <label class="choice"><input type="radio" name="withChildren" value="Ні"><span>Ні</span></label>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="childrenCount">Кількість дітей</label>
+            <input id="childrenCount" name="childrenCount" type="number" inputmode="numeric" min="0" max="10" placeholder="Наприклад: 1 або 2">
           </div>
 
           <div class="field">
