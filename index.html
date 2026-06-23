@@ -107,11 +107,11 @@
 
     .hero {
       position: relative;
-      min-height: 770px;
-      padding: 18px 16px 20px;
+      min-height: auto;
+      padding: 18px 16px 34px;
       display: flex;
       flex-direction: column;
-      justify-content: flex-end;
+      justify-content: flex-start;
       overflow: hidden;
       isolation: isolate;
     }
@@ -119,10 +119,13 @@
     .hero::before {
       content: "";
       position: absolute;
-      inset: 0;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: clamp(300px, 80vw, 620px);
       z-index: -3;
       background:
-        linear-gradient(180deg, rgba(57,40,31,.03) 0%, rgba(57,40,31,.02) 28%, rgba(248,240,230,.08) 78%, #f8f0e6 100%),
+        linear-gradient(180deg, rgba(57,40,31,.02) 0%, rgba(57,40,31,.01) 55%, rgba(248,240,230,.4) 100%),
         url("couple-childhood.png") center top / 100% auto no-repeat,
         linear-gradient(180deg, #efe4d6 0%, #f8f0e6 100%);
       transform: scale(1);
@@ -132,10 +135,12 @@
     .hero::after {
       content: "";
       position: absolute;
-      inset: 0;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: clamp(300px, 80vw, 620px);
       z-index: -2;
-      background:
-        linear-gradient(180deg, rgba(255,248,237,0) 0%, rgba(255,248,237,.02) 42%, rgba(255,248,237,.24) 68%, #f8f0e6 100%);
+      background: linear-gradient(180deg, rgba(255,248,237,0) 0%, rgba(255,248,237,0) 70%, #f8f0e6 100%);
     }
 
     @keyframes heroZoom {
@@ -165,14 +170,14 @@
 
     .hero-card {
       position: relative;
-      width: 62%;
-      max-width: 320px;
-      margin-top: auto;
-      margin-bottom: 88px;
-      padding: 18px 16px 20px;
+      width: min(100%, 430px);
+      max-width: none;
+      margin-top: calc(clamp(300px, 80vw, 620px) + 24px);
+      margin-bottom: 22px;
+      padding: 22px 18px 22px;
       border-radius: 26px;
-      background: rgba(255, 250, 242, .54);
-      border: 1px solid rgba(255,255,255,.38);
+      background: rgba(255, 250, 242, .84);
+      border: 1px solid rgba(255,255,255,.56);
       backdrop-filter: blur(10px);
       box-shadow: 0 18px 40px rgba(89, 61, 39, .08);
       animation: fadeUp .9s .35s both;
@@ -849,9 +854,10 @@
     }
 
     @media (max-width: 390px) {
-      .hero { min-height: 710px; }
-      .hero::before { background-position: center top; background-size: 100% auto; }
-      .hero-card { width: 68%; margin-bottom: 76px; padding: 16px 14px 18px; }
+      .hero { padding: 16px 14px 30px; }
+      .hero::before,
+      .hero::after { height: 300px; }
+      .hero-card { width: 100%; margin-top: 324px; margin-bottom: 18px; padding: 18px 14px 20px; }
       h1 { font-size: 58px; }
       .hero-sub { font-size: 27px; }
       .time-grid { gap: 6px; }
@@ -868,23 +874,29 @@
       }
 
       .hero {
-        min-height: 860px;
-        padding: 24px 34px 24px;
+        min-height: auto;
+        padding: 24px 34px 38px;
         border-radius: 0 0 34px 34px;
+      }
+
+      .hero::before,
+      .hero::after {
+        height: clamp(520px, 48vw, 660px);
       }
 
       .hero::before {
         background:
-          linear-gradient(180deg, rgba(57,40,31,.03) 0%, rgba(57,40,31,.02) 28%, rgba(248,240,230,.08) 78%, #f8f0e6 100%),
-          url("couple-childhood.png") center 8% / cover no-repeat,
+          linear-gradient(180deg, rgba(57,40,31,.02) 0%, rgba(57,40,31,.01) 58%, rgba(248,240,230,.4) 100%),
+          url("couple-childhood.png") center top / cover no-repeat,
           linear-gradient(180deg, #efe4d6 0%, #f8f0e6 100%);
       }
 
       .hero-card {
-        width: 42%;
-        max-width: 430px;
-        margin-bottom: 92px;
-        padding: 28px 26px 26px;
+        width: min(100%, 520px);
+        max-width: 520px;
+        margin-top: calc(clamp(520px, 48vw, 660px) + 34px);
+        margin-bottom: 24px;
+        padding: 30px 28px 28px;
       }
 
       .top-badge {
