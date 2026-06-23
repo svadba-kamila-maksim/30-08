@@ -4,11 +4,11 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#f7efe3" />
-  <meta name="description" content="Весільне запрошення Каміли та Максима — 30 серпня 2026, Київ." />
+  <meta name="description" content="Весільне запрошення Каміли та Максима — 30 серпня 2026, ресторан Havana, Київ." />
   <title>Каміла & Максим — весільне запрошення</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:wght@500;600;700&family=Marck+Script&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #f8f0e6;
@@ -23,6 +23,8 @@
       --shadow: 0 18px 55px rgba(89, 61, 39, .13);
       --radius: 28px;
       --safe-bottom: env(safe-area-inset-bottom, 0px);
+      --font-display: "Cormorant Infant", Georgia, serif;
+      --font-script: "Marck Script", cursive;
     }
 
     * { box-sizing: border-box; }
@@ -128,8 +130,10 @@
         linear-gradient(180deg, rgba(57,40,31,.02) 0%, rgba(57,40,31,.01) 55%, rgba(248,240,230,.4) 100%),
         url("couple-childhood.png") center top / 100% auto no-repeat,
         linear-gradient(180deg, #efe4d6 0%, #f8f0e6 100%);
-      transform: scale(1);
-      animation: heroZoom 11s ease-out both;
+      opacity: 0;
+      transform: scale(1.035) translateY(-10px);
+      filter: blur(8px) saturate(.92);
+      animation: heroPhotoIn 1.25s cubic-bezier(.18,.82,.24,1) .18s both;
     }
 
     .hero::after {
@@ -143,9 +147,9 @@
       background: linear-gradient(180deg, rgba(255,248,237,0) 0%, rgba(255,248,237,0) 70%, #f8f0e6 100%);
     }
 
-    @keyframes heroZoom {
-      from { transform: scale(1.015); }
-      to { transform: scale(1); }
+    @keyframes heroPhotoIn {
+      0% { opacity: 0; transform: scale(1.045) translateY(-12px); filter: blur(10px) saturate(.9); }
+      100% { opacity: 1; transform: scale(1) translateY(0); filter: blur(0) saturate(1); }
     }
 
     .top-badge {
@@ -165,7 +169,7 @@
       letter-spacing: .08em;
       text-transform: uppercase;
       box-shadow: 0 10px 32px rgba(89,61,39,.08);
-      animation: fadeUp .8s .2s both;
+      animation: magicDrop .9s cubic-bezier(.18,.82,.24,1) .35s both;
     }
 
     .hero-card {
@@ -180,22 +184,25 @@
       border: 1px solid rgba(255,255,255,.56);
       backdrop-filter: blur(10px);
       box-shadow: 0 18px 40px rgba(89, 61, 39, .08);
-      animation: fadeUp .9s .35s both;
+      transform-origin: 50% 80%;
+      animation: heroCardIn 1.05s cubic-bezier(.18,.82,.24,1) .56s both;
     }
 
     .ornament {
       color: var(--gold);
-      font-size: 38px;
+      font-family: var(--font-script);
+      font-size: 46px;
       line-height: 1;
       margin-bottom: 8px;
+      text-shadow: 0 10px 25px rgba(195,151,87,.22);
     }
 
     h1, h2, h3 {
-      font-family: "Cormorant Garamond", Georgia, serif;
+      font-family: var(--font-display);
       margin: 0;
       color: var(--ink);
       font-weight: 700;
-      letter-spacing: -.03em;
+      letter-spacing: -.035em;
     }
 
     h1 {
@@ -205,9 +212,10 @@
     }
 
     .hero-sub {
-      font-family: "Cormorant Garamond", Georgia, serif;
-      font-size: 30px;
+      font-family: var(--font-display);
+      font-size: 31px;
       line-height: 1.02;
+      font-weight: 600;
       margin: 0 0 20px;
     }
 
@@ -235,6 +243,22 @@
       font-weight: 700;
       box-shadow: 0 18px 36px rgba(139, 91, 36, .24), inset 0 1px 0 rgba(255,255,255,.42);
       transition: transform .25s ease, box-shadow .25s ease;
+    }
+
+    .date-button {
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .date-button::after {
+      content: "";
+      position: absolute;
+      inset: -120% -40%;
+      background: linear-gradient(115deg, transparent 42%, rgba(255,255,255,.55), transparent 58%);
+      transform: translateX(-80%) rotate(8deg);
+      animation: buttonShimmer 3.2s ease-in-out 1.2s infinite;
+      z-index: -1;
     }
 
     .date-button:active { transform: translateY(2px) scale(.98); }
@@ -266,12 +290,23 @@
     }
 
     .card {
+      position: relative;
       border: 1px solid rgba(195,151,87,.22);
       background: var(--paper);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
       backdrop-filter: blur(18px);
       overflow: hidden;
+    }
+
+    .card::after {
+      content: "";
+      position: absolute;
+      inset: -90% -70%;
+      pointer-events: none;
+      background: linear-gradient(115deg, transparent 38%, rgba(255,255,255,.34) 49%, rgba(255,255,255,.18) 52%, transparent 64%);
+      opacity: 0;
+      transform: translateX(-42%) rotate(10deg);
     }
 
     .section-title {
@@ -352,7 +387,7 @@
 
     .time-box strong {
       display: block;
-      font-family: "Cormorant Garamond", Georgia, serif;
+      font-family: var(--font-display);
       font-size: 46px;
       line-height: .85;
       color: #4b392f;
@@ -397,7 +432,7 @@
       border-collapse: collapse;
       table-layout: fixed;
       text-align: center;
-      font-family: "Cormorant Garamond", Georgia, serif;
+      font-family: var(--font-display);
     }
 
     .calendar th {
@@ -491,7 +526,7 @@
       border: 1px solid rgba(195,151,87,.45);
       background: #fffaf2;
       color: var(--gold-dark);
-      font-family: "Cormorant Garamond", Georgia, serif;
+      font-family: var(--font-display);
       font-size: 18px;
       font-weight: 700;
       box-shadow: 0 8px 18px rgba(113, 78, 51, .08);
@@ -506,7 +541,7 @@
 
     .timeline-box strong {
       display: block;
-      font-family: "Cormorant Garamond", Georgia, serif;
+      font-family: var(--font-display);
       font-size: 29px;
       line-height: 1;
       margin-bottom: 6px;
@@ -745,18 +780,104 @@
 
     .reveal {
       opacity: 0;
-      transform: translateY(22px);
-      transition: opacity .7s ease, transform .7s ease;
+      transform: translate3d(0, 34px, 0) scale(.985);
+      filter: blur(8px);
+      transition:
+        opacity .95s cubic-bezier(.18,.82,.24,1),
+        transform .95s cubic-bezier(.18,.82,.24,1),
+        filter .95s cubic-bezier(.18,.82,.24,1);
+      transition-delay: var(--reveal-delay, 0ms);
+      will-change: opacity, transform, filter;
     }
 
     .reveal.visible {
       opacity: 1;
-      transform: translateY(0);
+      transform: translate3d(0, 0, 0) scale(1);
+      filter: blur(0);
     }
+
+    .reveal.visible .card,
+    .card.reveal.visible {
+      animation: softCardGlow 1.25s cubic-bezier(.18,.82,.24,1) both;
+    }
+
+    .reveal.visible .card::after,
+    .card.reveal.visible::after {
+      animation: cardShine 1.25s ease .22s both;
+    }
+
+    .reveal.visible .section-title h2 {
+      animation: titleFloatIn .9s cubic-bezier(.18,.82,.24,1) both;
+    }
+
+    .reveal.visible .section-title p {
+      animation: textFadeIn .85s ease .12s both;
+    }
+
+    .reveal.visible .time-box,
+    .reveal.visible .timeline li,
+    .reveal.visible .field {
+      animation: littlePop .72s cubic-bezier(.18,.82,.24,1) both;
+    }
+
+    .reveal.visible .time-box:nth-child(2),
+    .reveal.visible .timeline li:nth-child(2),
+    .reveal.visible .field:nth-child(2) { animation-delay: .08s; }
+    .reveal.visible .time-box:nth-child(3),
+    .reveal.visible .timeline li:nth-child(3),
+    .reveal.visible .field:nth-child(3) { animation-delay: .16s; }
+    .reveal.visible .time-box:nth-child(4),
+    .reveal.visible .field:nth-child(4) { animation-delay: .24s; }
+    .reveal.visible .field:nth-child(5) { animation-delay: .30s; }
+    .reveal.visible .field:nth-child(6) { animation-delay: .36s; }
 
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(18px); }
       to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes magicDrop {
+      0% { opacity: 0; transform: translateY(-14px) scale(.96); filter: blur(6px); }
+      100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+    }
+
+    @keyframes heroCardIn {
+      0% { opacity: 0; transform: translateY(28px) scale(.96); filter: blur(10px); }
+      65% { opacity: 1; transform: translateY(-3px) scale(1.012); filter: blur(0); }
+      100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+    }
+
+    @keyframes softCardGlow {
+      0% { box-shadow: 0 12px 35px rgba(89,61,39,.08), 0 0 0 rgba(195,151,87,0); }
+      52% { box-shadow: 0 20px 60px rgba(89,61,39,.15), 0 0 45px rgba(221,184,118,.28); }
+      100% { box-shadow: var(--shadow); }
+    }
+
+    @keyframes cardShine {
+      0% { opacity: 0; transform: translateX(-48%) rotate(10deg); }
+      25% { opacity: .92; }
+      100% { opacity: 0; transform: translateX(54%) rotate(10deg); }
+    }
+
+    @keyframes titleFloatIn {
+      0% { opacity: 0; transform: translateY(16px); filter: blur(5px); }
+      100% { opacity: 1; transform: translateY(0); filter: blur(0); }
+    }
+
+    @keyframes textFadeIn {
+      0% { opacity: 0; transform: translateY(10px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes littlePop {
+      0% { opacity: 0; transform: translateY(14px) scale(.97); filter: blur(4px); }
+      100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+    }
+
+    @keyframes buttonShimmer {
+      0%, 45% { transform: translateX(-85%) rotate(8deg); opacity: 0; }
+      58% { opacity: .85; }
+      75%, 100% { transform: translateX(85%) rotate(8deg); opacity: 0; }
     }
 
     .intro {
@@ -808,7 +929,8 @@
     }
 
     .intro h2 {
-      font-size: 46px;
+      font-family: var(--font-display);
+      font-size: 48px;
       line-height: .92;
       margin-bottom: 10px;
     }
@@ -867,70 +989,14 @@
       .calendar td { font-size: 22px; height: 36px; }
     }
 
-    @media (min-width: 900px) {
-      .page {
-        width: min(calc(100% - 48px), 1180px);
-        padding-bottom: 34px;
-      }
 
-      .hero {
-        min-height: auto;
-        padding: 24px 34px 38px;
-        border-radius: 0 0 34px 34px;
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
       }
-
-      .hero::before,
-      .hero::after {
-        height: clamp(520px, 48vw, 660px);
-      }
-
-      .hero::before {
-        background:
-          linear-gradient(180deg, rgba(57,40,31,.02) 0%, rgba(57,40,31,.01) 58%, rgba(248,240,230,.4) 100%),
-          url("couple-childhood.png") center top / cover no-repeat,
-          linear-gradient(180deg, #efe4d6 0%, #f8f0e6 100%);
-      }
-
-      .hero-card {
-        width: min(100%, 520px);
-        max-width: 520px;
-        margin-top: calc(clamp(520px, 48vw, 660px) + 34px);
-        margin-bottom: 24px;
-        padding: 30px 28px 28px;
-      }
-
-      .top-badge {
-        top: 26px;
-        left: 34px;
-      }
-
-      .hero-scroll {
-        right: 34px;
-        bottom: 28px;
-      }
-
-      h1 { font-size: clamp(86px, 7vw, 110px); }
-      .hero-sub { font-size: 38px; }
-      .hero-joke { font-size: 18px; max-width: 360px; }
-      .section { padding: 0 34px 26px; }
-
-      .countdown-card { padding: 26px 24px 22px; }
-      .calendar-card, .schedule-card, .rsvp-card { padding: 28px 26px; }
-      .where-card {
-        grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr);
-        align-items: center;
-        gap: 24px;
-      }
-      .venue-photo-wrap, .venue-photo { min-height: 250px; }
-      .timeline {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 18px;
-      }
-      .timeline::before { display: none; }
-      .timeline li { grid-template-columns: 1fr; gap: 12px; }
-      .timeline-time { margin-top: 0; margin-inline: auto; width: 52px; height: 52px; font-size: 22px; }
-      .timeline-box { text-align: center; min-height: 168px; }
-      .timeline-box strong { font-size: 34px; }
     }
   </style>
 </head>
@@ -1008,16 +1074,16 @@
       <div class="card schedule-card">
         <ol class="timeline">
           <li>
-            <div class="timeline-time">15:30</div>
-            <div class="timeline-box"><strong>Збір гостей</strong><em>Обіймаємось, вітаємось і робимо вигляд, що ніхто не хвилюється.</em></div>
+            <div class="timeline-time">13:30</div>
+            <div class="timeline-box"><strong>Збір гостей та Welcome-зона</strong><em>Обіймаємось, вітаємось, ловимо перші усмішки й налаштовуємось на свято.</em></div>
           </li>
           <li>
-            <div class="timeline-time">16:00</div>
-            <div class="timeline-box"><strong>Церемонія</strong><em>Скажемо «так» і, можливо, трохи поплачемо. Красиво, чесно й без спойлерів.</em></div>
+            <div class="timeline-time">14:00</div>
+            <div class="timeline-box"><strong>Весільна церемонія</strong><em>Скажемо «так» і, можливо, трохи поплачемо. Красиво, щиро й без зайвих спойлерів.</em></div>
           </li>
           <li>
-            <div class="timeline-time">17:00</div>
-            <div class="timeline-box"><strong>Банкет</strong><em>Переходимо до стратегічно важливої частини — святкувати, їсти й танцювати.</em></div>
+            <div class="timeline-time">15:00</div>
+            <div class="timeline-box"><strong>Святковий банкет</strong><em>Переходимо до стратегічно важливої частини — святкувати, смакувати й танцювати.</em></div>
           </li>
         </ol>
       </div>
@@ -1030,13 +1096,13 @@
       </div>
       <div class="card where-card">
         <div class="venue-photo-wrap">
-          <img class="venue-photo" src="grand-palace-restaurant.webp" alt="Ресторан Grand Palace">
+          <img class="venue-photo" src="grand-palace-restaurant.webp" alt="Ресторан Havana">
         </div>
         <div>
-          <h3>Ресторан<br>“Grand Palace”</h3>
-          <p>вул. Каховська, 60<br>м. Київ</p>
+          <h3>Ресторан<br>“Havana”</h3>
+          <p>Набережне шосе, 28<br>м. Київ</p>
           <p style="margin-top:10px;"><em>Приїжджайте туди, де буде красиво, голосно і дуже смачно.</em></p>
-          <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%D0%A0%D0%B5%D1%81%D1%82%D0%BE%D1%80%D0%B0%D0%BD%20Grand%20Palace%20%D0%9A%D0%B0%D1%85%D0%BE%D0%B2%D1%81%D1%8C%D0%BA%D0%B0%2060%20%D0%9A%D0%B8%D1%97%D0%B2" target="_blank" rel="noopener">Відкрити на мапі →</a>
+          <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%D0%A0%D0%B5%D1%81%D1%82%D0%BE%D1%80%D0%B0%D0%BD%20Havana%2C%20%D0%9D%D0%B0%D0%B1%D0%B5%D1%80%D0%B5%D0%B6%D0%BD%D0%B5%20%D1%88%D0%BE%D1%81%D0%B5%2C%2028%2C%20%D0%9A%D0%B8%D1%97%D0%B2" target="_blank" rel="noopener">Відкрити на мапі →</a>
         </div>
       </div>
     </section>
@@ -1126,7 +1192,7 @@
     // Приклад: const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/XXXXXXXX/exec';
     const GOOGLE_SCRIPT_URL = '';
 
-    const eventDate = new Date('2026-08-30T15:30:00+03:00');
+    const eventDate = new Date('2026-08-30T13:30:00+03:00');
     const pad = (n) => String(n).padStart(2, '0');
 
     function updateCountdown() {
@@ -1165,6 +1231,7 @@
 
     openInvite.addEventListener('click', () => {
       intro.classList.add('hide');
+      document.body.classList.add('invite-open');
       launchConfetti();
     });
 
@@ -1173,7 +1240,10 @@
         if (entry.isIntersecting) entry.target.classList.add('visible');
       });
     }, { threshold: 0.14 });
-    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+    document.querySelectorAll('.reveal').forEach((el, index) => {
+      el.style.setProperty('--reveal-delay', `${Math.min(index * 35, 140)}ms`);
+      observer.observe(el);
+    });
 
     const form = document.getElementById('rsvpForm');
     const statusBox = document.getElementById('formStatus');
