@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#f7efe3" />
-  <meta name="description" content="Весільне запрошення Каміли та Максима — 30 серпня 2026, ресторан Havana, Київ." />
+  <meta name="description" content="Весільне запрошення Максима та Каміли — 30 серпня 2026, ресторан Havana, Київ." />
   <title>Максим & Каміла — весільне запрошення</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -128,7 +128,7 @@
       z-index: -3;
       background:
         linear-gradient(180deg, rgba(57,40,31,.02) 0%, rgba(57,40,31,.01) 55%, rgba(248,240,230,.4) 100%),
-        url("couple-childhood.png") center top / 100% auto no-repeat,
+        url("https://i.ibb.co/3bMx805/IMG-7119.png") center top / 100% auto no-repeat,
         linear-gradient(180deg, #efe4d6 0%, #f8f0e6 100%);
       opacity: 0;
       transform: scale(1.035) translateY(-10px);
@@ -686,26 +686,36 @@
     }
 
     .range-row {
-      display: grid;
-      grid-template-columns: repeat(10, 1fr);
-      gap: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: nowrap;
+      gap: 2px;
       margin-top: 9px;
+      width: 100%;
+    }
+
+    .range-row .choice {
+      flex: 0 0 auto;
     }
 
     .range-row .choice span {
-      min-height: 34px;
-      width: 34px;
+      min-height: clamp(24px, 6.8vw, 34px);
+      width: clamp(24px, 6.8vw, 34px);
+      height: clamp(24px, 6.8vw, 34px);
       padding: 0;
-      font-size: 12px;
-      margin: 0 auto;
+      font-size: clamp(10px, 2.8vw, 12px);
+      margin: 0;
     }
 
     .scale-labels {
       display: flex;
       justify-content: space-between;
+      gap: 8px;
       margin-top: 6px;
       color: var(--muted);
       font-size: 11px;
+      white-space: nowrap;
     }
 
     .submit-btn {
@@ -985,7 +995,6 @@
       .time-grid { gap: 6px; }
       .time-box strong { font-size: 39px; }
       .choice-grid.three { grid-template-columns: 1fr; }
-      .range-row { grid-template-columns: repeat(5, 1fr); row-gap: 7px; }
       .calendar td { font-size: 22px; height: 36px; }
     }
 
@@ -1018,7 +1027,7 @@
       <div class="top-badge">30.08.2026 · Київ</div>
       <div class="hero-card">
         <div class="ornament">♡</div>
-        <h1>Максим &<br>Каміла</h1>
+        <h1>Максим &<br>Максим</h1>
         <p class="hero-sub">Запрошуємо вас<br>на наше весілля</p>
         <p class="hero-joke">Поки він вчив перші літери у школі, вона тільки вчилася ходити — але доля знала, що ми обов'язково зустрінемося.</p>
         <a class="date-button" href="#rsvp" aria-label="Перейти до підтвердження присутності">
@@ -1166,6 +1175,11 @@
           </div>
 
           <div class="field">
+            <label for="favoriteTrack">Ваш улюблений трек?</label>
+            <input id="favoriteTrack" name="favoriteTrack" type="text" placeholder="Трек, який хочеться почути на святі">
+          </div>
+
+          <div class="field">
             <label for="food">Чи є у вас харчові побажання?</label>
             <textarea id="food" name="food" placeholder="Алергії, вегетаріанство або просто “без кінзи, будь ласка”"></textarea>
           </div>
@@ -1185,6 +1199,28 @@
               <label class="choice"><input type="radio" name="bitterLevel" value="10"><span>10</span></label>
             </div>
             <div class="scale-labels"><span>тихо</span><span>душевно</span><span>на повну!</span></div>
+          </div>
+
+          <div class="field">
+            <div class="label">Яка ваша весільна суперсила?</div>
+            <div class="choice-grid">
+              <label class="choice"><input type="radio" name="superpower" value="Танцюю до останньої пісні" required><span>Танцюю до останньої пісні</span></label>
+              <label class="choice"><input type="radio" name="superpower" value="Роблю фото краще за фотографа"><span>Роблю фото краще за фотографа</span></label>
+              <label class="choice"><input type="radio" name="superpower" value="Плачу на церемонії"><span>Плачу на церемонії</span></label>
+              <label class="choice"><input type="radio" name="superpower" value="Контролюю тости"><span>Контролюю тости</span></label>
+              <label class="choice"><input type="radio" name="superpower" value="Я просто красивий/красива"><span>Я просто красивий/красива</span></label>
+              <label class="choice"><input type="radio" name="superpower" value="Свій варіант"><span>Свій варіант</span></label>
+            </div>
+            <input id="superpowerCustom" name="superpowerCustom" type="text" placeholder="Свій варіант: наприклад, ловлю букет поглядом">
+          </div>
+
+          <div class="field">
+            <div class="label">Чи готові ви сказати тост?</div>
+            <div class="choice-grid three">
+              <label class="choice"><input type="radio" name="toast" value="Так, але після келиха" required><span>Так, але після келиха</span></label>
+              <label class="choice"><input type="radio" name="toast" value="Ні, я краще аплодую"><span>Ні, я краще аплодую</span></label>
+              <label class="choice"><input type="radio" name="toast" value="Можливо, якщо мене не знайдуть"><span>Можливо, якщо мене не знайдуть</span></label>
+            </div>
           </div>
 
           <button class="submit-btn" type="submit">Надіслати відповідь ✈</button>
@@ -1210,8 +1246,8 @@
 
   <script>
     // 1) Для інтеграції з Google Sheets встав сюди URL Web App із Google Apps Script.
-    // Приклад: const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/XXXXXXXX/exec';
-    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzlq3dfjdjhR4RIs5gqPau-oYxxOZB-vLREtSH6NQmqBfbWbuZniM_Ho1yOPhQF75xRYw/exec';
+    // Приклад: const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz9A3jICS7e_S-jHLAF8f_m4w0Mz_EKdcFFPkBvyC9ok8CT9b97P1fcHU51L5-8NgoyHg/exec';
+    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz9A3jICS7e_S-jHLAF8f_m4w0Mz_EKdcFFPkBvyC9ok8CT9b97P1fcHU51L5-8NgoyHg/exec';
 
     const eventDate = new Date('2026-08-30T13:30:00+03:00');
     const pad = (n) => String(n).padStart(2, '0');
@@ -1281,6 +1317,12 @@
       submitButton.textContent = 'Відправляємо...';
 
       const data = Object.fromEntries(new FormData(form).entries());
+      const customSuperpower = (data.superpowerCustom || '').trim();
+      if (data.superpower === 'Свій варіант' && customSuperpower) {
+        data.superpower = customSuperpower;
+      }
+      delete data.superpowerCustom;
+
       const payload = {
         ...data,
         submittedAt: new Date().toISOString(),
